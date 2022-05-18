@@ -1,0 +1,82 @@
+{%extends 'base_layout.html'%}{%block content%}
+
+
+
+<body >
+<script>
+
+  function modal_eliminar(id) {
+    Swal.fire ({
+      title: 'estas seguro?',
+      text: "esta accion no se puede deshacer",
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonText: 'No',
+      showConfirmButton: true,
+      confirmButtonText: 'Si, borrar'
+   
+    })
+    .then (function(result) {
+        if (result.isConfirmed) {
+          window.location.href = "/eliminar_alumno/"+id
+        }
+
+    })
+    
+  }
+
+</script>
+
+<div id="tabla_usuarios">
+<header>
+  <h1>Lista</h1>
+</header>     
+  <div>
+      <a href="{% url 'export_excel' %}" class = "btn btn-primary" id='btn-2'> Exportar a Excel </a>
+    </div>
+
+
+
+    <table id="example" class="stripe" > 
+      <thead>
+     
+        <tr>
+          <th>nombre</th>
+          <th>apellido paterno </th>
+          <th>apellido materno</th>    
+          <th>E-mail</th>
+          <th>telefono</th>
+          <th>generacion</th>
+          <th>opcion</th>
+
+      
+      </thead>
+      <tbody>
+        {% for men in data %}
+        <tr>
+          <td>{{men.nombre}}</td>
+          <td>{{men.apellido_paterno}}</td>
+          <td>{{men.apellido_materno}}</td>
+          <td>{{men.email}}</td>
+          <td>{{men.telefono}}</td>
+          <td>{{men.generacion}}</td>
+          <td><a href ='/editar_alumno/{{men.id}}'>editar</a>   |  <a href ='#' onclick="modal_eliminar({{men.id}})">eliminar</a>  </td>
+          
+        </tr>
+        {% endfor %} 
+      </tbody>
+
+     
+   <tfoot>
+    
+      </tfoot> 
+    </table>
+</div>
+</body>
+
+</html>
+
+
+
+{%endblock content%}  
+

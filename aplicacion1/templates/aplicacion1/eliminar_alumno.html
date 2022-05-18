@@ -1,0 +1,17 @@
+{%extends 'base_layout.html'%}
+
+{%block content%}
+{% load static %}
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p id='confirma'>Estas seguro que quieres eliminar ?</p>
+    
+    <input   id='btn-3' class="btn btn-outline-dark" type="submit" value="Eliminar"/>
+    <a href="/listado"><div  id='btn-3' class="btn btn-outline-dark">Cancelar</div></a>
+
+</form>
+
+
+{%endblock content%}
