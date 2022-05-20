@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=e55cq8*y067m9$wpndtm#5=^c!yfxb&pb@l)3nv!!_)5uhj6f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['proyectoscuola.herokuapp.com', '127.0.0.1']
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
