@@ -1,2 +1,2 @@
-web: gunicorn django_project.wsgi:application --log-file -
+web: gunicorn Proyecto_Scuola.wsgi --log-file -
 
