@@ -3,6 +3,8 @@
 {%block content%}
 {% load static %}
 
+<h1>Registro Ex-Alunni</h1>
+
 {% load crispy_forms_tags %}
 
 
@@ -12,32 +14,37 @@
 <form action="" method="POST">
     {% csrf_token %}
     <div id="form_register"> 
-        <div class="row">
-            <div class="col-4">
+        <div id="registro" class="row">
+            <div class="col-sm-4">
               {{ form.nombre|as_crispy_field }}
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
               {{ form.apellido_paterno|as_crispy_field }}
             </div>
-            <div class="col-4">
+            <div class="col-sm-4">
                 {{ form.apellido_materno|as_crispy_field }}
               </div>
-              <div class="col-4">
+            
+            </div>
+              <div class="row">
+              <div class="col-sm-4">
                 {{ form.telefono|as_crispy_field }}
               </div>
-              <div class="col-4">
+              <div class="col-sm-4">
                 {{ form.email|as_crispy_field }}
               </div>
-              <div class="col-4">
+              <div class="col-sm-4">
                 {{ form.generacion|as_crispy_field }}
               </div>
+            </div>
         </div>
 
     </div>
     </div>
 </div>
 </div>
-  <input id="btn-2" class="btn btn-outline-dark" type="submit" value="Registrar"  />
+
+  <button id="btn-2" class="btn btn-outline-dark" type="submit"/>Registrar</button>
 
 
 </form>

@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(228, 241, 241);
+  background-color: rgb(239, 243, 243);
 }
 
 h1{
@@ -19,7 +19,7 @@ header{
 
 
 .bg-black_1{
-  background-color:  rgb(148, 145, 138);
+  background-color:  rgb(33, 32, 110);
 }
 
 nav{
@@ -55,9 +55,9 @@ nav{
  
 
 #btn-2 {
-  width: 25%;
-  margin-left: 38%;
-  background-color:  rgb(148, 145, 138);
+  width: 100px;
+  margin-left: 45%;
+  background-color:  rgb(33, 32, 110);
   color: #fff;
   border-color: #fff;
 }
@@ -67,7 +67,7 @@ nav{
 #tabla_usuarios {
 
 padding: 1%;
-margin-top: 5%;
+
 margin-right: 5%;
 margin-left: 5%;
 color:rgb(112, 98, 61);
@@ -77,11 +77,31 @@ background-color:  rgba(161, 202, 206, 0.87);
 
 #form_registro{
 
-padding: 5%;
+padding: 2%;
 margin-left: 10%;
 
 }
 
+#form_mail{
+
+
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-bottom: 2%;
+  
+  }
+
+  
+#asunto{
+
+margin-right: 40%;
+
+}
+
+#registro{
+
+  margin-bottom: 5%;
+}
 #logo {
 
 width: 33%;
@@ -92,12 +112,13 @@ margin-right:33%;
 
 
 footer {
-  background-color: rgb(148, 145, 138);
+  background-color: rgb(33, 32, 110);
   color:#fff;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10%;
-  padding-bottom: 1%;
+
+
   margin:10px;
   position: relative;
   z-index: 0;
@@ -120,4 +141,18 @@ footer {
   color: #fff;
   border-color: #fff;
   margin-bottom: 3%;
+}
+
+#form_login{
+  margin-left: 40%;
+  margin-right: 20%;
+  margin-bottom: 5%;
+  
+}
+
+#usuario {
+  color: rgb(33, 32, 110);
+  font-size: large;
+  text-align: right;
+  margin-right: 10%;
 }

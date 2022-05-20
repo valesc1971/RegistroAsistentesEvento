@@ -1,0 +1,36 @@
+{%extends 'base_layout.html'%}
+
+{%block content%}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div id="form_mail"> 
+        <div id= "asunto" class="row">
+            <div class="col-sm-12">
+              {{ form.asunto|as_crispy_field }}
+            </div>
+         </div>    
+         <div class="row">
+            <div class="col-sm-12">
+              {{ form.mensaje|as_crispy_field }}
+            </div>
+        </div>
+
+    </div>
+
+
+  <button id="btn-2" class="btn btn-outline-dark" type="submit"/>Enviar</button>
+
+
+</form>
+
+
+
+
+
+{%endblock content%}

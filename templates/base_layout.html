@@ -30,24 +30,31 @@
 			<li class="nav-item">
 				<a class="nav-link" href="{% url 'registro_alumno' %}" id="form-contact">Registro</a>
 			</li>
-            <li class="nav-item">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}" id="form-contact">Ingreso-Admin</a>
+      </li>
+      {% if user.is_superuser %}
+      <li class="nav-item">
 				<a class="nav-link" href="{% url 'listado' %}" id="form-contact">Tabla</a>
 			</li>
-        <li class="nav-item">
-      <a class="nav-link" href="{% url 'login' %}" id="form-contact">Ingreso-Admin</a>
-      </li>  
+  
       <li class="nav-item">
         <a class="nav-link" href="{% url 'salir' %}" id="form-contact">Salir-Admin</a>
         </li> 
-
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'correo_todos' %}" id="form-contact">Enviar Correo</a>
+          </li> 
+        
+        {% endif %}
 	</div>
   
 </nav>
-
+{% if user.is_superuser %}
 <div id="usuario">
-     <p> usuario: {{request.user.username}} </h2>
+     <p> Usuario: {{request.user.username}} </h2>
 
 </div>
+{% endif %}
 <div class="logo">
     <img id="logo" src="{% static 'aplicacion1/images/logoSIV.png'%}" class="img-fluid" alt="logo.png">
 </div>
@@ -57,7 +64,7 @@
       {% for m in messages %}
         <script>
           swal.fire({
-            title: "Felicitaciones!",
+            title: "",
             text: "{{m}}",
             icon: "success",
           });

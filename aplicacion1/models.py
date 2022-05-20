@@ -9,3 +9,10 @@ class Alumno(models.Model):
     telefono=models.CharField(max_length=100, null=False)
     email=models.EmailField()
     generacion=models.CharField(max_length=15, null=False)
+
+class Correo(models.Model):
+    asunto=models.CharField(max_length=100, null=False)
+    mensaje=models.TextField(null=False)
+
+
+

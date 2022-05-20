@@ -9,24 +9,26 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-10">
+
         {% load crispy_forms_tags %}
         <div class="container">
         <form action="/login/" method="POST">
             {% csrf_token %}
             <div id="form_login"> 
         
-                    <div class="col-6">
+                    <div class="col-sm-6">
                       {{ form.nombre|as_crispy_field }}
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6">
                       {{ form.password|as_crispy_field }}
                     </div>
 
+
         </div>
-        </div>
+
+        <div class="d-grid gap-2 d-md-block">
             <button id="btn-2" class="btn btn-outline-dark">Ingresar</button>
-        
+          </div>
         </form>
         
       </div>

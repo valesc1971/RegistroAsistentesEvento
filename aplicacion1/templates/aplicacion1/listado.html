@@ -27,16 +27,28 @@
 
 </script>
 
-<div id="tabla_usuarios">
-<header>
-  <h1>Lista</h1>
-</header>     
-  <div>
-      <a href="{% url 'export_excel' %}" class = "btn btn-primary" id='btn-2'> Exportar a Excel </a>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+
     </div>
+    <div class="col-sm">
+      <header>
+        <h1>Lista</h1>
+      </header>    
+    </div>
+    <div class="col-sm">
+      <div>
+        <a href="{% url 'export_excel' %}" class = "btn btn-primary" id='btn-2'> Exportar a Excel </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
+ 
+<div id="tabla_usuarios">
     <table id="example" class="stripe" > 
       <thead>
      
@@ -47,7 +59,8 @@
           <th>E-mail</th>
           <th>telefono</th>
           <th>generacion</th>
-          <th>opcion</th>
+          <th>editar / eliminar</th>
+
 
       
       </thead>
@@ -60,7 +73,8 @@
           <td>{{men.email}}</td>
           <td>{{men.telefono}}</td>
           <td>{{men.generacion}}</td>
-          <td><a href ='/editar_alumno/{{men.id}}'>editar</a>   |  <a href ='#' onclick="modal_eliminar({{men.id}})">eliminar</a>  </td>
+          <td><button id="btn-2" href ='/editar_alumno/{{men.id}}'>editar</button>
+          <button id="btn-2"href ='#' onclick="modal_eliminar({{men.id}})">eliminar</button>  </td>
           
         </tr>
         {% endfor %} 

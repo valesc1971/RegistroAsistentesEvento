@@ -5,9 +5,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as auth_login , logout
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
 
-from aplicacion1.forms import AlumnoForm, LoginForm
-from aplicacion1.models import Alumno
+from aplicacion1.forms import AlumnoForm, LoginForm, CorreoForm
+from aplicacion1.models import Alumno, Correo
 
 import xlwt
 
@@ -15,6 +17,9 @@ import xlwt
 
 def inicio (request):
     return render (request, 'aplicacion1/index.html')
+
+#def page_not_found_view(request, exception): #mensaje de error
+    #return render(request, '404.html', status=404)
 
 def login(request):   #ingreso de usuario admin
     if request.method == "POST":
@@ -54,7 +59,11 @@ def registro_alumno(request):
             alumno.generacion=form.cleaned_data['generacion']
             alumno.save()
             messages.success(request, 'ingresado correctamente')
-            
+            html_content=render_to_string('aplicacion1/email_template.html')
+            to_email = str(form['email'].value())
+            msg = EmailMultiAlternatives('Confirmacion registro Ex-Alunni SIV',html_content, 'exalunnisiv2022@gmail.com',[to_email,])
+            msg.attach_alternative(html_content, "text/html")
+            msg.send()
 
         return redirect('/registro_alumno')
     else:
@@ -93,22 +102,44 @@ def export_excel (request):
     row_num = 0 
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
-
+    
     columns = ['Nombre', 'Apellido Paterno', 'Apellido Materno', 'Telefono', 'Email', 'Generacion']
-
     for col_num in range (len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
-
     font_style = xlwt.XFStyle()
 
     rows=Alumno.objects.all().values_list('nombre', 'apellido_paterno', 'apellido_materno', 'telefono', 'email', 'generacion')
-
     for row in rows:
         row_num+=1
-
         for col_num in range (len(row)):
             ws.write(row_num, col_num, row[col_num], font_style )
     
     wb.save(response)
-
     return response
+
+def correo_todos(request):
+    form = CorreoForm()
+    if request.method == "POST":
+        form=CorreoForm(data=request.POST)
+        if form.is_valid():
+            correo=Correo()
+            correo.asunto=form.cleaned_data['asunto']
+            correo.mensaje=form.cleaned_data['mensaje']
+            correo.save()
+            subject=request.POST.get('asunto')
+            #html_content=render_to_string('aplicacion1/correo_todos.html')
+            email_to=[]
+            for alumno in Alumno.objects.all():
+                email_to.append(alumno.email)
+            #print (email_to)
+            #to_email = str(form['email'].value())
+            msg = EmailMultiAlternatives(subject,"html_content", 'exalunnisiv2022@gmail.com',email_to)
+            #msg.attach_alternative(html_content, "text/html")
+            msg.send()
+
+        return redirect('/correo_todos')
+    else:
+        form = CorreoForm()
+        return render (request, 'aplicacion1/correo_todos.html',{"form":form})  
+
+
