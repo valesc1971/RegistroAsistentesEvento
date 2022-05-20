@@ -141,3 +141,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'exalunnisiv2022@gmail.com'
 EMAIL_HOST_PASSWORD = 'Exalunnisiv.2022'
 EMAIL_USE_TLS = True
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
