@@ -10,9 +10,19 @@ class Alumno(models.Model):
     email=models.EmailField()
     generacion=models.CharField(max_length=15, null=False)
 
+    def __str__(self):
+        return self.nombre + " " + self.apellido_paterno + " " + self.apellido_materno    
+
 class Correo(models.Model):
     asunto=models.CharField(max_length=100, null=False)
     mensaje=models.TextField(null=False)
 
+    def __str__(self):
+        return self.asunto
 
+class Foto(models.Model):
+    descripcion=models.CharField(max_length=500, null=False)
+    imagen=models.ImageField(upload_to='fotos', blank=True, null=True, default='logoSIV.png')
 
+    def __str__(self):
+        return self.descripcion

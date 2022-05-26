@@ -1,0 +1,28 @@
+{%extends 'base_layout.html'%}
+
+{%block content%}
+
+{% include "fancybox/fancybox_css.html" %} 
+
+<button id="btn-5"><a style= "color: white" href="/fotos_ingreso" class="nav-link waves-effect">subir fotos </a></button>
+
+
+<div class="container">
+    <div class="row" id="galeria">
+        {% for foto in fotos %}  
+        <div id= "prod_gal" class="col-md-6"class="card" style="width: 18rem;">
+            <a data-fancybox class="fancybox"
+                data-src="{{ foto.imagen.url }}">
+            <img class="card-img-top" src="{{ foto.imagen.url }}" alt="Card image cap" ></img>
+        </a>
+         <div class="card-body">
+            <h5 style="font-size: medium" class="card-title">{{ foto.descripcion }}</h5>
+        </div>
+        </div>  
+        {% endfor %}
+    </div>
+  </div>
+  
+  {% include "fancybox/fancybox_js.html" %} 
+  
+  {%endblock content%}

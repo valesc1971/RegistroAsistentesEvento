@@ -1,0 +1,44 @@
+{%extends 'base_layout.html'%}
+{%block content%}
+
+
+
+<div id="titulo">
+    <h1 id="titulo1"> Subir foto </h1>
+</div>
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+      <div class="col-12">
+        <form id="subir_foto_form" action="" method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div id="form_subir_foto"> 
+                <div class="row">
+                  <div class="col-4-sm">
+                    <div id="subir_foto">
+                      {{ form.imagen|as_crispy_field }}
+                      <img id="image" />
+                    </div>
+                  </div>
+                  <div class="col-8-sm">
+                    <div id="descripcion_foto">
+                     {{ form.descripcion|as_crispy_field }}
+                    </div>
+
+                    <button id="btn-2" class="btn btn-outline-dark">Subir Foto</button>
+
+                </div>
+            </div>
+        </form>
+      </div>
+</div>   
+
+<script>
+  document.getElementById('id_imagen').onchange = function () {
+    var src = URL.createObjectURL(this.files[0])
+    document.getElementById('image').src = src
+  }
+</script>
+
+{%endblock content%}

@@ -56,10 +56,11 @@ nav{
 
 #btn-2 {
   width: 100px;
-  margin-left: 45%;
+  margin-left: 40%;
   background-color:  rgb(33, 32, 110);
   color: #fff;
   border-color: #fff;
+  font-size: small;
 }
 
 
@@ -79,6 +80,7 @@ background-color:  rgba(161, 202, 206, 0.87);
 
 padding: 2%;
 margin-left: 10%;
+font-size: small;
 
 }
 
@@ -155,4 +157,67 @@ footer {
   font-size: large;
   text-align: right;
   margin-right: 10%;
+}
+
+#btn-4 {
+  width: 100px;
+  margin-left: 45%;
+  background-color:  rgb(33, 32, 110);
+  color: #fff;
+  border-color: #fff;
+}
+
+#editar
+{
+  color: #fff;
+  text-decoration: none
+}
+
+#btn-5 {
+  width: 15%;
+  margin-left: 43%;
+  background-color:  rgb(148, 145, 138);
+  color: #fff;
+  border-color: #fff;
+  margin-bottom: 3%;
+  text-decoration: none;
+}
+
+#subir_foto{
+ font-size: small;
+
+}
+
+#galeria{
+  padding: 1%;
+  margin-left: 5%;
+}
+
+#descripcion_foto {
+font-size: small;
+padding-bottom: 2%;
+
+}
+
+#image{
+  width: 90%;
+  height: 90%;
+
+}
+#btn-6 {
+  width: 100px;
+  background-color:  rgb(33, 32, 110);
+  color: #fff;
+  border-color: #fff;
+  font-size: small;
+}
+
+#form_subir_foto{
+  text-align: left;
+ 
+
+}
+
+#subir_foto_form{
+  margin:5%
 }

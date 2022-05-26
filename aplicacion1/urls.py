@@ -11,5 +11,8 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('salir/', views.salir, name='salir'),
     path('correo_todos/', views.correo_todos, name='correo_todos'),
+    path('fotos_ingreso/', views.fotos_ingreso, name='fotos_ingreso'),
+    path('fotos_galeria/', views.fotos_galeria, name='fotos_galeria'),
+
 
 ]

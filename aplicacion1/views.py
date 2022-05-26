@@ -8,8 +8,8 @@ from django.contrib.auth import authenticate, login as auth_login , logout
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
 
-from aplicacion1.forms import AlumnoForm, LoginForm, CorreoForm
-from aplicacion1.models import Alumno, Correo
+from aplicacion1.forms import AlumnoForm, LoginForm, CorreoForm, FotoForm
+from aplicacion1.models import Alumno, Correo, Foto
 
 import xlwt
 
@@ -142,4 +142,18 @@ def correo_todos(request):
         form = CorreoForm()
         return render (request, 'aplicacion1/correo_todos.html',{"form":form})  
 
+def fotos_galeria(request):
+    fotos=Foto.objects.all()
+    return render (request,'aplicacion1/fotos_galeria.html',{"fotos":fotos})
+
+def fotos_ingreso(request):  # ingreso de nuevos productos
+    form = FotoForm()
+    if request.method == "POST":
+        form=FotoForm(data=request.POST, files=request.FILES)
+        foto=form.save (commit=False)
+        foto.save()
+        return redirect('fotos_galeria')
+
+    else:
+        return render (request, 'aplicacion1/fotos_ingreso.html',{"form":form})
 

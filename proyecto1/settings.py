@@ -25,9 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=e55cq8*y067m9$wpndtm#5=^c!yfxb&pb@l)3nv!!_)5uhj6f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+#ALLOWED_HOSTS = ['proyectoscuola.herokuapp.com', '127.0.0.1']
 
-ALLOWED_HOSTS = ['proyectoscuola.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
@@ -42,12 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'aplicacion1',
     'crispy_forms',
+    'fancybox',
     'xlwt',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -142,4 +144,8 @@ EMAIL_HOST_USER = 'exalunnisiv2022@gmail.com'
 EMAIL_HOST_PASSWORD = 'Exalunnisiv.2022'
 EMAIL_USE_TLS = True
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

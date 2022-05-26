@@ -1,6 +1,8 @@
+from cProfile import label
+from logging import PlaceHolder
 from django import forms
 from django.db.models import fields
-from .models import Alumno, Correo
+from .models import Alumno, Correo, Foto
 
 class AlumnoForm(forms.ModelForm):
     class Meta:
@@ -18,4 +20,9 @@ class CorreoForm(forms.ModelForm):
         fields = ('asunto', 'mensaje')
 
 
+class FotoForm(forms.ModelForm):
+    class Meta:
+        model = Foto
+        fields = ('descripcion', 'imagen')
+        labels = {'imagen': 'Selecciona foto',}
 
