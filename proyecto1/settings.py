@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +29,9 @@ SECRET_KEY = 'django-insecure-=e55cq8*y067m9$wpndtm#5=^c!yfxb&pb@l)3nv!!_)5uhj6f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = ['trazaeventos.herokuapp.com']
+
+#DEBUG = True
+#ALLOWED_HOSTS = []
 
 #ALLOWED_HOSTS = []
 
@@ -45,6 +50,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'fancybox',
     'xlwt',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +135,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 #STATICFILES_DIRS = (    os.path.join(BASE_DIR, 'static/'),)
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "denmokmpq",
+    'API_KEY': "744112267643298",
+    'API_SECRET': "JNCwc6hhK2l50JbfkXZGqsRTQxk",
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Default primary key field type
