@@ -89,6 +89,8 @@ WSGI_APPLICATION = 'proyecto1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+DATABASE_URL = os.environ['DATABASE_URL']
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
