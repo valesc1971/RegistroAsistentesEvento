@@ -56,15 +56,16 @@ def registro_alumno(request):
             alumno.apellido_materno=form.cleaned_data['apellido_materno']
             alumno.telefono=form.cleaned_data['telefono']
             alumno.email=form.cleaned_data['email']
-            alumno.generacion=form.cleaned_data['generacion']
+            alumno.rut=form.cleaned_data['rut']
             alumno.save()
-            messages.success(request, 'ingresado correctamente')
+            messages.success(request, f"{alumno.nombre}, Gracias por registrarte con nosotros . Recibiras un mail con la confirmacion de tu registro.")
             html_content=render_to_string('aplicacion1/email_template.html')
             to_email = str(form['email'].value())
-            msg = EmailMultiAlternatives('Confirmacion registro Ex-Alunni SIV',html_content, 'exalunnisiv2022@gmail.com',[to_email,])
+            msg = EmailMultiAlternatives('Confirmacion registro Evento',html_content, 'valepython123@gmail.com',[to_email,])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
-
+        else:
+            messages.error(request, 'rut no es valido' )
         return redirect('/registro_alumno')
     else:
         form = AlumnoForm()
@@ -79,11 +80,13 @@ def editar_alumno(request, id):
     form=AlumnoForm(instance=alumno)
     if request.method=="POST":
         form=AlumnoForm(data=request.POST, instance=alumno)
-        form.save()
-        messages.success(request, 'modificado correctamente')
-        return redirect('/listado')
-    else:
-        return render (request, 'aplicacion1/editar_alumno.html',{"form":form})
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'modificado correctamente')
+            return redirect('/listado')
+        else:
+            messages.error(request, 'rut no es valido' )
+    return render (request, 'aplicacion1/editar_alumno.html',{"form":form})
 
 def eliminar_alumno(request, id):
     alumno=Alumno.objects.get(pk=id)
@@ -103,12 +106,12 @@ def export_excel (request):
     font_style = xlwt.XFStyle()
     font_style.font.bold = True
     
-    columns = ['Nombre', 'Apellido Paterno', 'Apellido Materno', 'Telefono', 'Email', 'Generacion']
+    columns = ['Nombre', 'Apellido Paterno', 'Apellido Materno', 'Telefono', 'Email', 'Rut']
     for col_num in range (len(columns)):
         ws.write(row_num, col_num, columns[col_num], font_style)
     font_style = xlwt.XFStyle()
 
-    rows=Alumno.objects.all().values_list('nombre', 'apellido_paterno', 'apellido_materno', 'telefono', 'email', 'generacion')
+    rows=Alumno.objects.all().values_list('nombre', 'apellido_paterno', 'apellido_materno', 'telefono', 'email', 'rut')
     for row in rows:
         row_num+=1
         for col_num in range (len(row)):
@@ -127,15 +130,17 @@ def correo_todos(request):
             correo.mensaje=form.cleaned_data['mensaje']
             correo.save()
             subject=request.POST.get('asunto')
+            mensaje=request.POST.get('mensaje')
             #html_content=render_to_string('aplicacion1/correo_todos.html')
             email_to=[]
             for alumno in Alumno.objects.all():
                 email_to.append(alumno.email)
             #print (email_to)
             #to_email = str(form['email'].value())
-            msg = EmailMultiAlternatives(subject,"html_content", 'exalunnisiv2022@gmail.com',email_to)
+            msg = EmailMultiAlternatives(subject,mensaje, 'valepython123@gmail.com',email_to)
             #msg.attach_alternative(html_content, "text/html")
             msg.send()
+            messages.success(request, "Mensaje enviado correctamente ")
 
         return redirect('/correo_todos')
     else:

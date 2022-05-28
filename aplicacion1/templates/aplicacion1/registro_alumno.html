@@ -3,7 +3,7 @@
 {%block content%}
 {% load static %}
 
-<h1>Registro Ex-Alunni</h1>
+<h1>Registro Asistentes</h1>
 
 {% load crispy_forms_tags %}
 
@@ -34,7 +34,7 @@
                 {{ form.email|as_crispy_field }}
               </div>
               <div class="col-sm-4">
-                {{ form.generacion|as_crispy_field }}
+                {{ form.rut|as_crispy_field }}
               </div>
             </div>
         </div>
