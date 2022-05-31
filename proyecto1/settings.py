@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
 import cloudinary
 import cloudinary_storage
 
@@ -28,7 +31,7 @@ SECRET_KEY = 'django-insecure-=e55cq8*y067m9$wpndtm#5=^c!yfxb&pb@l)3nv!!_)5uhj6f
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['asisteeventos.herokuapp.com']
+ALLOWED_HOSTS = ['asisteeventos.herokuapp.com', '127.0.0.1']
 
 #DEBUG = True
 #ALLOWED_HOSTS = []
@@ -163,4 +166,6 @@ EMAIL_USE_TLS = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
