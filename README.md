@@ -35,11 +35,41 @@ El detalle de las librerias y versiones utilizadas se encuentra en el archivo re
 
 <a name="Instalacion"></a>
 ## Instalacion
+
+**Clonar repositorio desde Github**
+
 Para descargar este proyecto, se debe clonar desde este repositorio remoto a un repositorio local.
 
-$git clone https://github.com/valesc1971/RegistroAsistentesEvento.git
+1. Abrir GitBash
+2. Ubicarse en el directorio de la ubicacion donde se quiere clonar la aplicacion
+3. Escribir   $git clone https://github.com/valesc1971/RegistroAsistentesEvento.gi
+4. Hacer Enter para clonar el repositorio 
+
+**Crear entorno virtual**
 
 Se debe tambien correr dentro de un entorno virtual de Python (virtualenv) (https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+
+1. Instalar pip
+py -m pip install --upgrade pip
+py -m pip --version
+
+2. Instalar virtualenv
+py -m pip install --user virtualenv
+
+3. Crear el entorno virtual
+py -m venv env
+
+4. Activar el entorno virtual 
+.\env\Scripts\activate
+
+5. Salir del entorno virtual
+deactivate
+
+**Instalar librerias adicionales**
+Las librerías instaladas se encuentran en el archivo requirements.txt. Para instalar, se debe hacer lo siguientes
+
+$ pip install -r requirements.txt
+
 
 <a name="Consideraciones"></a>
 ## Consideraciones
